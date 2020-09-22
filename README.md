@@ -1,21 +1,12 @@
-A library for Dart developers.
+Created as a practice for the Dart language.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+This Dart repository implements a client for the [speedrun.com API](https://github.com/speedruncomorg/api).
 
-## Usage
+## Usage: WIP
 
-A simple usage example:
+## Features and bugs: WIP
 
-```dart
-import 'package:dart_speedrun_api/dart_speedrun_api.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
+**The following text is the default text when generating the library.**
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
