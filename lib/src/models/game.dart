@@ -1,8 +1,16 @@
 // To parse this JSON data, do
 //
 //   final game = gameFromJson(jsonString);
+//
+// Note:
+//   Deleted `moderators` column
 
 import 'dart:convert';
+
+import 'common/asset.dart';
+import 'common/link.dart';
+import 'common/names.dart';
+import 'common/ruleset.dart';
 
 Game gameFromJson(Map<String, dynamic> json) => Game.fromJson(json);
 
@@ -89,109 +97,5 @@ class Game {
     'created': created.toIso8601String(),
     'assets': Map.from(assets).map((k, v) => MapEntry<String, dynamic>(k, v == null ? null : v.toJson())),
     'links': List<dynamic>.from(links.map((x) => x.toJson())),
-  };
-}
-
-class Asset {
-  Asset({
-    this.uri,
-    this.width,
-    this.height,
-  });
-
-  String uri;
-  int width;
-  int height;
-
-  factory Asset.fromJson(Map<String, dynamic> json) => Asset(
-    uri: json['uri'],
-    width: json['width'],
-    height: json['height'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'uri': uri,
-    'width': width,
-    'height': height,
-  };
-}
-
-class Link {
-  Link({
-    this.rel,
-    this.uri,
-  });
-
-  String rel;
-  String uri;
-
-  factory Link.fromJson(Map<String, dynamic> json) => Link(
-    rel: json['rel'],
-    uri: json['uri'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'rel': rel,
-    'uri': uri,
-  };
-}
-
-class Names {
-  Names({
-    this.international,
-    this.japanese,
-    this.twitch,
-  });
-
-  String international;
-  String japanese;
-  String twitch;
-
-  factory Names.fromJson(Map<String, dynamic> json) => Names(
-    international: json['international'],
-    japanese: json['japanese'],
-    twitch: json['twitch'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'international': international,
-    'japanese': japanese,
-    'twitch': twitch,
-  };
-}
-
-class Ruleset {
-  Ruleset({
-    this.showMilliseconds,
-    this.requireVerification,
-    this.requireVideo,
-    this.runTimes,
-    this.defaultTime,
-    this.emulatorsAllowed,
-  });
-
-  bool showMilliseconds;
-  bool requireVerification;
-  bool requireVideo;
-  List<String> runTimes;
-  String defaultTime;
-  bool emulatorsAllowed;
-
-  factory Ruleset.fromJson(Map<String, dynamic> json) => Ruleset(
-    showMilliseconds: json['show-milliseconds'],
-    requireVerification: json['require-verification'],
-    requireVideo: json['require-video'],
-    runTimes: List<String>.from(json['run-times'].map((x) => x)),
-    defaultTime: json['default-time'],
-    emulatorsAllowed: json['emulators-allowed'],
-  );
-
-  Map<String, dynamic> toJson() => {
-    'show-milliseconds': showMilliseconds,
-    'require-verification': requireVerification,
-    'require-video': requireVideo,
-    'run-times': List<dynamic>.from(runTimes.map((x) => x)),
-    'default-time': defaultTime,
-    'emulators-allowed': emulatorsAllowed,
   };
 }
