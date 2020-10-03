@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../base_api.dart';
 import '../../models/series.dart';
 import '../../models/pagination.dart';
@@ -6,32 +8,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class SeriesListApi extends BaseApi {
-  SeriesListApi({
-    this.directUri,
-  });
-
-  // TODO: assert for difference endpoint.
-  Uri directUri;
-
   @override
-  Uri endpointUri([Map<String, dynamic> options]) {
-    final endpointPath = '/api/v1/series';
-
-    return Uri.https(BaseApi.apiHost, endpointPath, options);
-  }
-
-  @override
-  Future<http.Response> requestEndpoint([Map<String, dynamic> options]) {
-    final url = directUri ?? endpointUri(options);
-
-    return http.get(url);
-  }
+  String endpointPath() => '/api/v1/series';
 
   @override
   Map<String, dynamic> parseReponse(http.Response response) {
     if (response.statusCode == 200) {
       final jsonMap = json.decode(response.body) as Map<String, dynamic>;
-      
       final result = {
         'data': jsonMap['data'].map((json) => seriesFromJson(json)).toList(),
         'pagination': paginationFromJson(jsonMap['pagination']),
@@ -39,6 +22,7 @@ class SeriesListApi extends BaseApi {
 
       return result;
     } else {
+      log('errorStatus: ${response.statusCode}\n  requestUri:${response.request.url}');
       return null;
     }
   }
