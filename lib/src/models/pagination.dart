@@ -6,8 +6,7 @@ import 'dart:convert';
 
 import 'common/link.dart';
 
-Pagination paginationFromJson(String str) =>
-    Pagination.fromJson(json.decode(str));
+Pagination paginationFromJson(Map<String, dynamic>  json) => Pagination.fromJson(json);
 
 String paginationToJson(Pagination data) => json.encode(data.toJson());
 
