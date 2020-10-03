@@ -15,7 +15,7 @@ void main() {
           expect(seriesList['pagination'].runtimeType, Pagination);
         });
 
-        test('Case with directUri', () async {
+        test('Case with directUri member', () async {
           var directUri = Uri.parse('https://www.speedrun.com/api/v1/series?offset=20');
           var _api = SeriesListApi(directUri: directUri);
           var seriesList = await _api.request();
