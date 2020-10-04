@@ -18,7 +18,7 @@ void main() {
         test('Case with directUri member', () async {
           var directUri = Uri.parse('https://www.speedrun.com/api/v1/series?offset=20');
           var _api = SeriesListApi();
-          var seriesList = await _api.request(directUri);
+          var seriesList = await _api.request(directUri: directUri);
 
           expect(seriesList['data'].whereType<Series>().length, 20);
           expect(seriesList['pagination'].runtimeType, Pagination);
@@ -30,7 +30,7 @@ void main() {
           var directUri =
               Uri.parse('https://www.speedrun.com/api/v1/series?name=invalid');
           var _api = SeriesListApi();
-          var seriesList = await _api.request(directUri);
+          var seriesList = await _api.request(directUri: directUri);
 
           expect(seriesList['data'], []);
           expect(seriesList['pagination'].runtimeType, Pagination);

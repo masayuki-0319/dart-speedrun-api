@@ -11,7 +11,7 @@ abstract class BaseApi implements InterfaceApi {
 
   @override
   Future<Map<String, dynamic>> request(
-      [Uri directUri, Map<String, dynamic> queryParameters]) async {
+      {Uri directUri, Map<String, dynamic> queryParameters}) async {
     final endpoint = _endpointUri(directUri, queryParameters);
     final response = await _requestEndpoint(endpoint);
     final result = parseReponse(response);

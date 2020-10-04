@@ -17,7 +17,7 @@ void main() {
         test('Case with directUri member', () async {
           var directUri = Uri.parse('https://www.speedrun.com/api/v1/series/rv7emz49');
           var _api = SeriesDetailApi();
-          var seriesDetail = await _api.request(directUri);
+          var seriesDetail = await _api.request(directUri: directUri);
 
           expect(seriesDetail['data'].runtimeType, Series);
         });
@@ -28,7 +28,7 @@ void main() {
           var directUri =
               Uri.parse('https://www.speedrun.com/api/v1/series/invalid');
           var _api = SeriesDetailApi();
-          var seriesDetail = await _api.request(directUri);
+          var seriesDetail = await _api.request(directUri: directUri);
 
           expect(seriesDetail, null);
         });
