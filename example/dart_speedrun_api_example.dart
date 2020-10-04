@@ -1,9 +1,11 @@
 import 'package:dart_speedrun_api/dart_speedrun_api.dart';
 
 void main() async {
-  var seriesApi = SeriesApi();
-  var seriesId = 'rv7emz49';
-  var series = await seriesApi.requestDetail(seriesId);
+  var _seriesId = 'rv7emz49';
+  var _api = SeriesDetailApi(id: _seriesId);
+  var _seriesResponse = await _api.request();
 
-  print('{ ID: ${seriesId} } is the series name of the ${series.names.international}');
+  var seriesObject = _seriesResponse['data'];
+
+  print('{ ID: ${_seriesId} } is the series name of the ${seriesObject.names.international}');
 }
