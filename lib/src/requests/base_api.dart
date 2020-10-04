@@ -26,10 +26,6 @@ abstract class BaseApi implements InterfaceApi {
     final path = endpointPath();
     final defaultUri = Uri.https(_apiHost, path, queryParameters);
 
-    if (directUri != null && defaultUri.path != directUri.path) {
-      throw 'Invalid argument: defaultUri differ endpoint path';
-    }
-
     return directUri ?? defaultUri;
   }
 
