@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:http/http.dart' as http;
 
 import '../base_api.dart';
@@ -14,12 +12,7 @@ class SeriesGamesApi extends BaseApi with GetCollectionData  {
   String endpointPath() => '/api/v1/series/${id}/games';
 
   @override
-  Map<String, dynamic> parseReponse(http.Response response) {
-    if (response.statusCode == 200) {
-      return getCollectionData(response, gameFromJson);
-    } else {
-      log('errorStatus: ${response.statusCode}\n  requestUri:${response.request.url}');
-      return null;
-    }
+  Map<String, dynamic> parseJsonData(http.Response response) {
+    return getCollectionData(response, gameFromJson);
   }
 }
