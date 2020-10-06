@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import '../base_api.dart';
+import '../util/get_single_data.dart';
 import '../../models/game.dart';
 
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
-class GameDetailApi extends BaseApi {
+class GameDetailApi extends BaseApi with GetSingleData {
   GameDetailApi({this.id});
   String id;
 
@@ -16,12 +16,7 @@ class GameDetailApi extends BaseApi {
   @override
   Map<String, dynamic> parseReponse(http.Response response) {
     if (response.statusCode == 200) {
-      final jsonMap = json.decode(response.body) as Map<String, dynamic>;
-      final result = {
-        'data': gameFromJson(jsonMap['data']),
-      };
-
-      return result;
+      return getSingleData(response, gameFromJson);
     } else {
       log('errorStatus: ${response.statusCode}\n  requestUri:${response.request.url}');
       return null;
