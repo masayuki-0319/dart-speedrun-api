@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
@@ -14,13 +15,14 @@ abstract class BaseApi implements InterfaceApi {
       {Uri directUri, Map<String, dynamic> queryParameters}) async {
     final endpoint = _endpointUri(directUri, queryParameters);
     final response = await _requestEndpoint(endpoint);
-    final result = parseReponse(response);
+    final result = _parseReponse(response);
 
     return result;
   }
 
   String endpointPath();
-  Map<String, dynamic> parseReponse(http.Response response);
+
+  Map<String, dynamic> parseJsonData(http.Response response);
 
   Uri _endpointUri([Uri directUri, Map<String, dynamic> queryParameters]) {
     final path = endpointPath();
@@ -31,5 +33,14 @@ abstract class BaseApi implements InterfaceApi {
 
   Future<http.Response> _requestEndpoint(Uri uri) {
     return http.get(uri);
+  }
+
+  Map<String, dynamic> _parseReponse(http.Response response) {
+    if (response.statusCode == 200) {
+      return parseJsonData(response);
+    } else {
+      log('errorStatus: ${response.statusCode}\n  requestUri:${response.request.url}');
+      return null;
+    }
   }
 }
