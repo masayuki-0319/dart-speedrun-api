@@ -1,26 +1,19 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-import '../../models/game.dart';
-import '../../models/pagination.dart';
 import '../base_api.dart';
+import '../util/get_collection_data.dart';
+import '../../models/game.dart';
 
-class GameListApi extends BaseApi {
+class GameListApi extends BaseApi with GetCollectionData {
   @override
   String endpointPath() => '/api/v1/games';
 
   @override
   Map<String, dynamic> parseReponse(http.Response response) {
     if (response.statusCode == 200) {
-      final jsonMap = json.decode(response.body) as Map<String, dynamic>;
-      final result = {
-        'data': jsonMap['data'].map((json) => gameFromJson(json)).toList(),
-        'pagination': paginationFromJson(jsonMap['pagination']),
-      };
-
-      return result;
+      return getCollectionData(response, gameFromJson);
     } else {
       log('errorStatus: ${response.statusCode}\n  requestUri:${response.request.url}');
       return null;

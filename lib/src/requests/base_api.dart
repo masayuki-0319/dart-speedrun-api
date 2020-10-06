@@ -20,6 +20,7 @@ abstract class BaseApi implements InterfaceApi {
   }
 
   String endpointPath();
+
   Map<String, dynamic> parseReponse(http.Response response);
 
   Uri _endpointUri([Uri directUri, Map<String, dynamic> queryParameters]) {
