@@ -6,7 +6,7 @@ import 'common/link.dart';
 //
 //     final category = categoryFromJson(jsonString);
 
-Category categoryFromJson(String str) => Category.fromJson(json.decode(str));
+Category categoryFromJson(Map<String, dynamic> json) => Category.fromJson(json);
 
 String categoryToJson(Category data) => json.encode(data.toJson());
 
