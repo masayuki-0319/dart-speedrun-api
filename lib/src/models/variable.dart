@@ -31,7 +31,7 @@ class Variable {
   bool mandatory;
   bool userDefined;
   bool obsoletes;
-  Values values;
+  Map values;
   bool isSubcategory;
   List<Link> links;
 
@@ -43,7 +43,7 @@ class Variable {
       mandatory: json['mandatory'],
       userDefined: json['user-defined'],
       obsoletes: json['obsoletes'],
-      values: Values.fromJson(json['values']),
+      values: json['values'],
       isSubcategory: json['is-subcategory'],
       links: List<Link>.from(json['links'].map((x) => Link.fromJson(x))),
   );
@@ -56,7 +56,7 @@ class Variable {
       'mandatory': mandatory,
       'user-defined': userDefined,
       'obsoletes': obsoletes,
-      'values': values.toJson(),
+      'values': values,
       'is-subcategory': isSubcategory,
       'links': List<dynamic>.from(links.map((x) => x.toJson())),
   };
