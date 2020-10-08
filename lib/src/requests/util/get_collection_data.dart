@@ -8,7 +8,7 @@ mixin GetCollectionData {
     final jsonMap = json.decode(response.body) as Map<String, dynamic>;
     final result = {
       'data': jsonMap['data'].map((json) => modelFromJson(json)).toList(),
-      'pagination': paginationFromJson(jsonMap['pagination']),
+      if (jsonMap.containsKey('pagination') ) 'pagination': paginationFromJson(jsonMap['pagination']),
     };
 
     return result;
