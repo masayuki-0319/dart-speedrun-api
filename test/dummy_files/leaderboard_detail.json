@@ -1,0 +1,23 @@
+{
+  "weblink": "https://www.speedrun.com/.hackInfection#Any",
+  "game": "k6qrzm1g",
+  "category": "jdr3y0d6",
+  "level": null,
+  "platform": null,
+  "region": null,
+  "emulators": null,
+  "video-only": false,
+  "timing": "ingame",
+  "values": { },
+  "runs": [{
+    "place": 1,
+    "run": "todo_write_run_list"
+  }],
+  "links": [{
+    "rel": "game",
+    "uri": "https://www.speedrun.com/api/v1/games/k6qrzm1g"
+  }, {
+    "rel": "category",
+    "uri": "https://www.speedrun.com/api/v1/categories/jdr3y0d6"
+  }]
+}

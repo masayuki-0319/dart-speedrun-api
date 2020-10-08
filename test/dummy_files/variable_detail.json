@@ -1,0 +1,38 @@
+{
+  "id": "wzx7q875",
+  "name": "cc",
+  "category": null,
+  "scope": {
+    "type": "full-game"
+  },
+  "mandatory": true,
+  "user-defined": false,
+  "obsoletes": false,
+  "values": {
+    "values": {
+      "zdbx1h88": {
+        "label": "150cc",
+        "rules": "do not cheat",
+        "flags": {
+          "miscellaneous": false
+        }
+      },
+      "k1omees9": {
+        "label": "200cc",
+        "rules": "do not cheat",
+        "flags": {
+          "miscellaneous": false
+        }
+      }
+    },
+    "default": "zdbx1h88"
+  },
+  "is-subcategory": true,
+  "links": [{
+    "rel": "self",
+    "uri": "https://www.speedrun.com/api/v1/variables/wzx7q875"
+  }, {
+    "rel": "game",
+    "uri": "https://www.speedrun.com/api/v1/games/zate4l10"
+  }]
+}
