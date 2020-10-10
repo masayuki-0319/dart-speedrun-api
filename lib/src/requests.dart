@@ -1,4 +1,5 @@
 export 'requests/categories/category_detail.dart';
+export 'requests/categories/category_records.dart';
 export 'requests/categories/category_variables.dart';
 
 export 'requests/games/game_categories.dart';
