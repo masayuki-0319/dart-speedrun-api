@@ -3,9 +3,25 @@ import 'package:test/test.dart';
 
 void main() {
   group('Requests::Leaderboards::LeaderboardCategoryApi', () {
-    LeaderboardCategoryApi _api;
+    group('Constructor', () {
+      group('invalid', () {
+        test('Case only record_id', () {
+          expect(() {
+            LeaderboardCategoryApi(record_id: 'pdvzq96w');
+          }, throwsA(isA<AssertionError>()));
+        });
+
+        test('Case only category_id', () {
+          expect(() {
+            LeaderboardCategoryApi(category_id: 'z276ozd0');
+          }, throwsA(isA<AssertionError>()));
+        });
+      });
+    });
 
     group('#request()', () {
+      LeaderboardCategoryApi _api;
+
       group('valid', () {
         test('Case default request', () async {
           _api = LeaderboardCategoryApi(
@@ -33,18 +49,6 @@ void main() {
           var leaderboardCategory = await _api.request(directUri: directUri);
 
           expect(leaderboardCategory, null);
-        });
-
-        test('Case only record_id', () {
-          expect(() {
-            LeaderboardCategoryApi(record_id: 'pdvzq96w');
-          }, throwsA(isA<AssertionError>()));
-        });
-
-        test('Case only category_id', () {
-          expect(() {
-            LeaderboardCategoryApi(category_id: 'z276ozd0');
-          }, throwsA(isA<AssertionError>()));
         });
       });
     });
