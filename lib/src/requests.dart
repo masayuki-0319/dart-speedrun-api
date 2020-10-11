@@ -10,6 +10,8 @@ export 'requests/games/game_list.dart';
 export 'requests/games/game_records.dart';
 export 'requests/games/game_variables.dart';
 
+export 'requests/leaderboards/leaderboard_category.dart';
+
 export 'requests/series/series_detail.dart';
 export 'requests/series/series_games.dart';
 export 'requests/series/series_list.dart';
